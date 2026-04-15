@@ -501,6 +501,19 @@
           <label class="form-label" for="fMensagem">Mensagem especial <span class="form-label-hint">(opcional — aparece na retrospectiva)</span></label>
           <textarea class="form-textarea" id="fMensagem" placeholder="Uma mensagem carinhosa para o homenageado..."></textarea>
         </div>
+        <div class="form-group">
+          <label class="form-label" for="fTransicoesDesenhos">Deseja transições de desenhos animados? *</label>
+          <select class="form-select" id="fTransicoesDesenhos" required>
+            <option value="">Selecione...</option>
+            <option value="Sim">Sim</option>
+            <option value="Não">Não</option>
+          </select>
+          <div class="form-error-msg" id="errTransicoesDesenhos">Selecione uma opção</div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="fRestricaoDesenho">Há sugestão ou restrição de desenho? <span class="form-label-hint">(opcional)</span></label>
+          <textarea class="form-textarea" id="fRestricaoDesenho" placeholder="Ex: pode usar Disney e evitar Peppa Pig"></textarea>
+        </div>
 
         <div class="form-group">
           <label class="form-label">Fotos * <span class="form-label-hint" id="fFotosLimit">(máx. 40)</span></label>
@@ -669,6 +682,16 @@
         }
       }
       if (n === 2) {
+        const transicoes = document.getElementById('fTransicoesDesenhos');
+        const transicoesErr = document.getElementById('errTransicoesDesenhos');
+        if (!transicoes.value.trim()) {
+          transicoes.classList.add('error');
+          transicoesErr.style.display = 'block';
+          valid = false;
+        } else {
+          transicoes.classList.remove('error');
+          transicoesErr.style.display = 'none';
+        }
         if (uploadedFotos.length === 0) {
           valid = false;
           alert('Selecione pelo menos 1 foto para continuar.');
@@ -693,6 +716,8 @@
       const tipoText = tipoEvento.options[tipoEvento.selectedIndex].text;
       const dataEvento = document.getElementById('fDataEvento').value;
       const dataFormatted = dataEvento ? new Date(dataEvento + 'T12:00:00').toLocaleDateString('pt-BR') : '';
+      const transicoes = document.getElementById('fTransicoesDesenhos');
+      const transicoesText = transicoes.options[transicoes.selectedIndex].text;
 
       const rows = [
         ['Pacote', p.nome + ' — ' + p.preco],
@@ -703,6 +728,8 @@
         ['Data', dataFormatted],
         ['Homenageado(a)', document.getElementById('fHomenageado').value],
         ['Música', document.getElementById('fMusica').value || '(não informada)'],
+        ['Transições de desenhos', transicoesText],
+        ['Sugestão/restrição de desenho', document.getElementById('fRestricaoDesenho').value || '(não informada)'],
         ['Fotos', uploadedFotos.length + ' arquivo(s)'],
       ];
       if (p.videos > 0) {
@@ -726,6 +753,8 @@
       const tipoText = tipoEvento.options[tipoEvento.selectedIndex].text;
       const dataEvento = document.getElementById('fDataEvento').value;
       const dataFormatted = dataEvento ? new Date(dataEvento + 'T12:00:00').toLocaleDateString('pt-BR') : '';
+      const transicoes = document.getElementById('fTransicoesDesenhos');
+      const transicoesText = transicoes.options[transicoes.selectedIndex].text;
 
       const msg = [
         '🎬 *Novo Pedido de Retrospectiva*',
@@ -738,6 +767,8 @@
         '📅 Data: ' + dataFormatted,
         '💝 Homenageado(a): ' + document.getElementById('fHomenageado').value,
         '🎵 Música: ' + (document.getElementById('fMusica').value || 'Não informada'),
+        '🎨 Transições de desenhos: ' + transicoesText,
+        '🧸 Sugestão/restrição de desenho: ' + (document.getElementById('fRestricaoDesenho').value || 'Não informada'),
         '📸 Fotos: ' + uploadedFotos.length + ' arquivo(s)',
       ];
       if (p.videos > 0) msg.push('🎥 Vídeos: ' + uploadedVideos.length + ' arquivo(s)');
