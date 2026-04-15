@@ -418,7 +418,7 @@
 <body>
 
   <header class="form-topbar">
-    <a href="index.html" class="form-back-link">
+    <a href="index.html#pacotes" class="form-back-link">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg>
       Voltar
     </a>
@@ -583,7 +583,7 @@
           <h3>Pedido enviado!</h3>
           <p>Recebemos suas informações. Vamos entrar em contato pelo WhatsApp para confirmar os detalhes e o pagamento.</p>
           <div class="form-summary" id="formSuccessSummary"></div>
-          <a href="index.html" class="btn-voltar">Voltar ao site</a>
+          <a href="index.html#pacotes" class="btn-voltar">Voltar ao site</a>
         </div>
       </div>
     </div>
@@ -743,10 +743,12 @@
       document.getElementById('formReview').innerHTML = html;
     }
 
+    const API_BASE = 'https://api-retrospectiva.asuaretrospectiva.workers.dev';
+
     function submitForm() {
       const btn = document.getElementById('btnSubmit');
       btn.disabled = true;
-      btn.textContent = 'Enviando...';
+      btn.textContent = 'Enviando arquivos...';
 
       const p = PACOTES[currentPacote];
       const tipoEvento = document.getElementById('fTipoEvento');
@@ -756,36 +758,99 @@
       const transicoes = document.getElementById('fTransicoesDesenhos');
       const transicoesText = transicoes.options[transicoes.selectedIndex].text;
 
-      const msg = [
-        '🎬 *Novo Pedido de Retrospectiva*',
-        '',
-        '📦 Pacote: ' + p.nome + ' (' + p.preco + ')',
-        '👤 Nome: ' + document.getElementById('fNome').value,
-        '📱 WhatsApp: ' + document.getElementById('fWhatsapp').value,
-        '📧 E-mail: ' + document.getElementById('fEmail').value,
-        '🎉 Evento: ' + tipoText,
-        '📅 Data: ' + dataFormatted,
-        '💝 Homenageado(a): ' + document.getElementById('fHomenageado').value,
-        '🎵 Música: ' + (document.getElementById('fMusica').value || 'Não informada'),
-        '🎨 Transições de desenhos: ' + transicoesText,
-        '🧸 Sugestão/restrição de desenho: ' + (document.getElementById('fRestricaoDesenho').value || 'Não informada'),
-        '📸 Fotos: ' + uploadedFotos.length + ' arquivo(s)',
-      ];
-      if (p.videos > 0) msg.push('🎥 Vídeos: ' + uploadedVideos.length + ' arquivo(s)');
-      if (document.getElementById('fMensagem').value) {
-        msg.push('💌 Mensagem: ' + document.getElementById('fMensagem').value);
-      }
-      msg.push('', 'Arquivos serão enviados por este chat.');
+      const orderId = crypto.randomUUID ? crypto.randomUUID() : 'order-' + Date.now() + '-' + Math.random().toString(36).substr(2, 9);
 
-      const whatsappUrl = 'https://wa.me/5513991225406?text=' + encodeURIComponent(msg.join('\n'));
+      // Collect all files
+      const allFiles = [];
+      uploadedFotos.forEach(function(f) { allFiles.push({ file: f, category: 'fotos' }); });
+      uploadedVideos.forEach(function(f) { allFiles.push({ file: f, category: 'videos' }); });
+      uploadedMusica.forEach(function(f) { allFiles.push({ file: f, category: 'musica' }); });
 
-      setTimeout(function () {
+      // Step 1: Get presigned URLs
+      const filesPayload = allFiles.map(function(item) {
+        return { name: item.file.name, type: item.file.type, size: item.file.size, category: item.category };
+      });
+
+      fetch(API_BASE + '/api/presign', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ order_id: orderId, files: filesPayload })
+      })
+      .then(function(res) {
+        if (!res.ok) throw new Error('Erro ao preparar upload');
+        return res.json();
+      })
+      .then(function(data) {
+        btn.textContent = 'Enviando ' + allFiles.length + ' arquivo(s)...';
+
+        // Step 2: Upload each file to R2 via presigned URL
+        var uploadPromises = data.urls.map(function(urlInfo, i) {
+          return fetch(urlInfo.upload_url, {
+            method: 'PUT',
+            headers: { 'Content-Type': allFiles[i].file.type },
+            body: allFiles[i].file
+          });
+        });
+
+        return Promise.all(uploadPromises).then(function() {
+          return data;
+        });
+      })
+      .then(function(presignData) {
+        btn.textContent = 'Finalizando pedido...';
+
+        // Step 3: Submit form data to Worker
+        var submitPayload = {
+          order_id: orderId,
+          pacote: currentPacote,
+          cliente: {
+            nome: document.getElementById('fNome').value,
+            email: document.getElementById('fEmail').value,
+            whatsapp: document.getElementById('fWhatsapp').value
+          },
+          evento: {
+            tipo: tipoText,
+            tipo_valor: document.getElementById('fTipoEvento').value,
+            nome_homenageado: document.getElementById('fHomenageado').value,
+            data_evento: dataEvento,
+            data_formatada: dataFormatted,
+            mensagem_especial: document.getElementById('fMensagem').value || ''
+          },
+          preferencias: {
+            musica: document.getElementById('fMusica').value || '',
+            transicoes_desenhos: transicoesText,
+            restricao_desenho: document.getElementById('fRestricaoDesenho').value || ''
+          },
+          arquivos_enviados: {
+            fotos: uploadedFotos.length,
+            videos: uploadedVideos.length,
+            musica: uploadedMusica.length
+          },
+          file_keys: presignData.urls.map(function(u) { return u.key; })
+        };
+
+        return fetch(API_BASE + '/api/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(submitPayload)
+        });
+      })
+      .then(function(res) {
+        if (!res.ok) throw new Error('Erro ao enviar pedido');
+        return res.json();
+      })
+      .then(function(result) {
         document.getElementById('formSuccessSummary').innerHTML = document.getElementById('formReview').innerHTML;
         showStep(4);
         btn.disabled = false;
         btn.textContent = 'Enviar pedido ✓';
-        window.open(whatsappUrl, '_blank');
-      }, 1200);
+      })
+      .catch(function(err) {
+        console.error('Erro:', err);
+        alert('Ocorreu um erro ao enviar. Por favor, tente novamente ou entre em contato pelo WhatsApp.');
+        btn.disabled = false;
+        btn.textContent = 'Enviar pedido ✓';
+      });
     }
 
     // ── File upload handlers ──
