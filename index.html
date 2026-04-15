@@ -1007,12 +1007,14 @@
       position: relative;
     }
 
-    .portfolio-media video {
+    .portfolio-media video,
+    .portfolio-media iframe {
       width: 100%;
       height: 100%;
       display: block;
       object-fit: contain;
       background: #000;
+      border: none;
     }
 
     .portfolio-label {
@@ -2250,12 +2252,18 @@
       </p>
       <p class="prova-impact" data-reveal data-delay="2">Esse é o poder de uma retrospectiva feita com carinho.</p>
       <div data-reveal data-delay="3" style="margin-top:2rem;">
-        <video controls playsinline preload="metadata" controlslist="nodownload" disablepictureinpicture
-          oncontextmenu="return false;"
-          style="width:100%;max-width:280px;aspect-ratio:9/16;object-fit:cover;border-radius:var(--radius-lg);box-shadow:var(--shadow-lg);">
-          <source src="video reacao 2 com logo.mp4" type="video/mp4">
-          Seu navegador não suporta vídeos.
-        </video>
+        <button id="btnVideoModal" aria-label="Assistir vídeo de reação"
+          style="all:unset;cursor:pointer;display:inline-block;position:relative;width:100%;max-width:280px;aspect-ratio:9/16;border-radius:var(--radius-lg);box-shadow:var(--shadow-lg);overflow:hidden;">
+          <img src="https://i.ytimg.com/vi/zsv3SlWS-_4/hq720.jpg"
+            alt="Reação à retrospectiva"
+            style="width:100%;height:100%;object-fit:cover;display:block;">
+          <span style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.2);">
+            <svg width="64" height="48" viewBox="0 0 68 48" xmlns="http://www.w3.org/2000/svg">
+              <path d="M66.5 7.7s-.7-4.7-2.8-6.8C60.7-2 57.2-2 55.6-2.2 46.5-3 34-3 34-3h0S21.5-3 12.4-2.2C10.8-2 7.3-2 4.3.9 2.2 3 1.5 7.7 1.5 7.7S.8 13.2.8 18.8v5.2c0 5.5.7 11.1.7 11.1s.7 4.7 2.8 6.8c3 3.1 6.9 3 8.7 3.3C19.3 45.8 34 46 34 46s12.5 0 21.6-.8c1.6-.2 5.1-.2 8.1-3.1 2.1-2.1 2.8-6.8 2.8-6.8s.7-5.5.7-11.1v-5.2c0-5.6-.7-11.1-.7-11.1z" fill="red"/>
+              <path d="M27 32V14l18 9-18 9z" fill="#fff"/>
+            </svg>
+          </span>
+        </button>
       </div>
       <div class="prova-divider" data-reveal data-delay="4"></div>
     </div>
@@ -2368,21 +2376,23 @@
     <div class="portfolio-grid">
       <div class="portfolio-item" data-reveal data-delay="1">
         <div class="portfolio-media">
-          <video controls playsinline preload="metadata" controlslist="nodownload" disablepictureinpicture
-            oncontextmenu="return false;">
-            <source src="portfolio video 1 - 1 ano nathan.mp4" type="video/mp4">
-            Seu navegador não suporta vídeos.
-          </video>
+          <iframe
+            src="https://www.youtube.com/embed/UZ7b3YMzkRc?rel=0"
+            title="Portfólio - Festa de 1 ano Nathan"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+          </iframe>
         </div>
         <div class="portfolio-label">Festa de 1 ano - Nathan</div>
       </div>
       <div class="portfolio-item" data-reveal data-delay="2">
         <div class="portfolio-media">
-          <video controls playsinline preload="metadata" controlslist="nodownload" disablepictureinpicture
-            oncontextmenu="return false;">
-            <source src="portfolio video 2 - laura 3 anos.mp4" type="video/mp4">
-            Seu navegador não suporta vídeos.
-          </video>
+          <iframe
+            src="https://www.youtube.com/embed/G-Qci2piOTk?rel=0"
+            title="Portfólio - Festa de 2 anos Lara"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+          </iframe>
         </div>
         <div class="portfolio-label">Festa de 2 anos - Lara</div>
       </div>
@@ -2436,7 +2446,7 @@
       <!-- SIMPLES -->
       <div class="pacote-card" data-reveal data-delay="2">
         <div class="pacote-nome">Simples</div>
-        <div class="pacote-preco">R$ 89,90</div>
+        <div class="pacote-preco"><span style="text-decoration:line-through;font-size:0.6em;color:var(--text-muted);font-weight:400;">R$ 99,90</span> R$ 89,90</div>
         <div class="pacote-destaques">
           <div class="pacote-destaque-item">
             <div class="pacote-destaque-valor">50</div>
@@ -2467,7 +2477,7 @@
       <!-- ESPECIAL -->
       <div class="pacote-card destaque" data-reveal data-delay="3">
         <div class="pacote-nome">Especial</div>
-        <div class="pacote-preco">R$ 149,90</div>
+        <div class="pacote-preco"><span style="text-decoration:line-through;font-size:0.6em;color:var(--text-muted);font-weight:400;">R$ 179,90</span> R$ 149,90 <span style="display:inline-block;background:var(--accent);color:#fff;font-size:0.4em;font-weight:600;padding:0.2em 0.5em;border-radius:4px;vertical-align:middle;margin-left:0.2em;">-20%</span></div>
         <div class="pacote-destaques">
           <div class="pacote-destaque-item">
             <div class="pacote-destaque-valor">100</div>
@@ -2756,7 +2766,7 @@
           </svg>
         </button>
         <div class="faq-answer">
-          <p class="faq-answer-text">Até 1 ajuste para garantir que tudo fique perfeito.</p>
+          <p class="faq-answer-text">Um ajuste para garantir que tudo fique perfeito.</p>
         </div>
       </div>
       <div class="faq-item">
@@ -3375,6 +3385,37 @@
     document.addEventListener('keydown', e => {
       if (e.key === 'Escape') closeForm();
     });
+
+    /* ── Video Modal ── */
+    (function () {
+      var modal = document.createElement('div');
+      modal.id = 'videoModal';
+      modal.style.cssText = 'display:none;position:fixed;inset:0;z-index:10000;align-items:center;justify-content:center;background:rgba(0,0,0,.85);';
+      modal.innerHTML =
+        '<button onclick="closeVideoModal()" style="position:absolute;top:1rem;right:1rem;all:unset;cursor:pointer;color:#fff;font-size:2rem;line-height:1;z-index:1;" aria-label="Fechar">&times;</button>' +
+        '<iframe id="videoModalIframe" src="" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen style="width:92vw;height:80vh;max-width:460px;border:none;border-radius:12px;"></iframe>';
+      document.body.appendChild(modal);
+
+      document.getElementById('btnVideoModal').addEventListener('click', function () {
+        document.getElementById('videoModalIframe').src = 'https://www.youtube.com/embed/zsv3SlWS-_4?rel=0&autoplay=1';
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+      });
+
+      modal.addEventListener('click', function (e) {
+        if (e.target === modal) closeVideoModal();
+      });
+
+      window.closeVideoModal = function () {
+        modal.style.display = 'none';
+        document.getElementById('videoModalIframe').src = '';
+        document.body.style.overflow = '';
+      };
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && modal.style.display === 'flex') closeVideoModal();
+      });
+    })();
   </script>
 </body>
 
