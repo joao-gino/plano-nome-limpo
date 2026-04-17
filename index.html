@@ -7,7 +7,8 @@
   <title>Retrospectiva Animada Personalizada para Festas | Vídeo com Fotos - Sua Retrospectiva</title>
   <meta name="description"
     content="Transforme suas fotos e vídeos em uma retrospectiva animada emocionante para aniversários, bodas, formaturas e celebrações. A partir de R$49,90. Entrega em até 48h.">
-  <meta name="keywords" content="retrospectiva animada, retrospectiva para festa, vídeo retrospectiva com fotos, retrospectiva personalizada, retrospectiva aniversário, retrospectiva bodas, retrospectiva formatura, vídeo homenagem festa">
+  <meta name="keywords"
+    content="retrospectiva animada, retrospectiva para festa, vídeo retrospectiva com fotos, retrospectiva personalizada, retrospectiva aniversário, retrospectiva bodas, retrospectiva formatura, vídeo homenagem festa">
   <link rel="canonical" href="https://suaretrospectiva.com.br/">
   <meta name="robots" content="index, follow">
   <meta name="author" content="Sua Retrospectiva Animada">
@@ -16,7 +17,8 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://suaretrospectiva.com.br/">
   <meta property="og:title" content="Retrospectiva Animada Personalizada para Festas | Sua Retrospectiva">
-  <meta property="og:description" content="Transforme suas fotos e vídeos em uma retrospectiva animada que vai emocionar toda a família. A partir de R$49,90.">
+  <meta property="og:description"
+    content="Transforme suas fotos e vídeos em uma retrospectiva animada que vai emocionar toda a família. A partir de R$49,90.">
   <meta property="og:image" content="https://suaretrospectiva.com.br/logo.png">
   <meta property="og:locale" content="pt_BR">
   <meta property="og:site_name" content="Sua Retrospectiva Animada">
@@ -24,7 +26,8 @@
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Retrospectiva Animada Personalizada para Festas">
-  <meta name="twitter:description" content="Transforme suas fotos e vídeos em uma retrospectiva animada emocionante. A partir de R$49,90.">
+  <meta name="twitter:description"
+    content="Transforme suas fotos e vídeos em uma retrospectiva animada emocionante. A partir de R$49,90.">
   <meta name="twitter:image" content="https://suaretrospectiva.com.br/logo.png">
 
   <link rel="icon" type="image/png" href="logo.png">
@@ -1708,12 +1711,103 @@
       box-shadow: 0 6px 24px rgba(37, 211, 102, 0.45);
     }
 
+    /* ══════════════════════════════════════════════
+       INSTAGRAM FLOATING BUTTON
+    ══════════════════════════════════════════════ */
+    .instagram-float {
+      position: fixed;
+      bottom: calc(1.5rem + 56px + 0.75rem);
+      /* empilhado acima do WhatsApp */
+      right: 1.5rem;
+      z-index: 109;
+      width: 56px;
+      height: 56px;
+      background: linear-gradient(45deg, #F58529, #DD2A7B 50%, #8134AF 75%, #515BD4);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      box-shadow: 0 4px 16px rgba(221, 42, 123, 0.35);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      text-decoration: none;
+    }
+
+    .instagram-float:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 24px rgba(221, 42, 123, 0.45);
+    }
+
     @media (max-width: 640px) {
       .whatsapp-float {
         bottom: 5.5rem;
         right: 0.75rem;
         width: 56px;
         height: 56px;
+      }
+
+      .instagram-float {
+        bottom: calc(5.5rem + 56px + 0.75rem);
+        right: 0.75rem;
+      }
+    }
+
+    /* ══════════════════════════════════════════════
+       HERO INSTAGRAM HIGHLIGHT PILL
+    ══════════════════════════════════════════════ */
+    .hero-instagram {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin-top: 1.25rem;
+      padding: 0.55rem 1.1rem 0.55rem 0.55rem;
+      background: white;
+      border: 1px solid var(--warm-300);
+      border-radius: var(--radius-pill);
+      font-family: var(--font-ui);
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      text-decoration: none;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.25s ease;
+    }
+
+    .hero-instagram:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+      border-color: #DD2A7B;
+    }
+
+    .hero-instagram-icon {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: linear-gradient(45deg, #F58529, #DD2A7B 50%, #8134AF 75%, #515BD4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      flex-shrink: 0;
+    }
+
+    .hero-instagram-text strong {
+      color: var(--text-primary);
+      font-weight: 700;
+    }
+
+    .hero-instagram-arrow {
+      color: var(--text-muted);
+      transition: transform 0.2s;
+    }
+
+    .hero-instagram:hover .hero-instagram-arrow {
+      transform: translateX(3px);
+      color: #DD2A7B;
+    }
+
+    @media (max-width: 768px) {
+      .hero-instagram {
+        font-size: 0.8rem;
       }
     }
 
@@ -1799,13 +1893,467 @@
       }
     }
 
+    /* ══════════════════════════════════════════════
+       NEW SECTION: FOUNDER / QUEM FAZ
+    ══════════════════════════════════════════════ */
+    .founder {
+      background: white;
+      padding: var(--section-padding);
+    }
+
+    .founder-inner {
+      max-width: 960px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 0.8fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .founder-media {
+      position: relative;
+    }
+
+    .founder-photo-placeholder {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      border-radius: var(--radius-2xl);
+      background: linear-gradient(135deg, var(--accent-wash), var(--accent-soft));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: var(--shadow-lg);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .founder-photo-placeholder img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .founder-photo-caption {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+      padding: 2rem;
+      color: var(--accent-dark);
+      font-family: var(--font-ui);
+    }
+
+    .founder-photo-caption svg {
+      margin-bottom: 1rem;
+      opacity: 0.4;
+    }
+
+    .founder-photo-caption span {
+      font-size: 0.8rem;
+      font-weight: 600;
+      opacity: 0.7;
+      letter-spacing: 0.03em;
+    }
+
+    .founder-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: var(--accent-ghost);
+      color: var(--accent-dark);
+      padding: 0.4rem 0.9rem;
+      border-radius: var(--radius-pill);
+      font-family: var(--font-ui);
+      font-weight: 600;
+      font-size: 0.75rem;
+      letter-spacing: 0.03em;
+      margin-bottom: 1rem;
+    }
+
+    .founder-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.6rem, 3.5vw, 2.1rem);
+      font-weight: 600;
+      color: var(--text-primary);
+      line-height: 1.25;
+      margin-bottom: 1.25rem;
+    }
+
+    .founder-title em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .founder-text {
+      font-family: var(--font-body);
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+
+    .founder-signature {
+      margin-top: 1.5rem;
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 1.15rem;
+      color: var(--accent-dark);
+    }
+
+    @media (max-width: 768px) {
+      .founder-inner {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        text-align: center;
+      }
+
+      .founder-media {
+        max-width: 320px;
+        margin: 0 auto;
+      }
+    }
+
+    /* ══════════════════════════════════════════════
+       NEW SECTION: FOUNDER VIDEO
+    ══════════════════════════════════════════════ */
+    .founder-video-wrap {
+      max-width: 720px;
+      margin: 2.5rem auto 0;
+      text-align: center;
+    }
+
+    .founder-video-placeholder {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border-radius: var(--radius-xl);
+      background: linear-gradient(135deg, var(--accent-wash), var(--accent-soft));
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: var(--shadow-lg);
+      color: var(--accent-dark);
+      padding: 2rem;
+      text-align: center;
+      position: relative;
+    }
+
+    .founder-video-placeholder .play-icon {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+    }
+
+    .founder-video-placeholder .play-icon svg {
+      color: var(--accent);
+      margin-left: 4px;
+    }
+
+    .founder-video-placeholder-note {
+      font-family: var(--font-ui);
+      font-size: 0.85rem;
+      font-weight: 600;
+      opacity: 0.7;
+      letter-spacing: 0.02em;
+    }
+
+    .founder-video-caption {
+      font-family: var(--font-ui);
+      font-size: 0.9rem;
+      color: var(--text-tertiary);
+      margin-top: 1rem;
+      font-style: italic;
+    }
+
+    /* ══════════════════════════════════════════════
+       NEW SECTION: TRUST / ZERO COMPROMISSO
+    ══════════════════════════════════════════════ */
+    .trust-banner {
+      max-width: 720px;
+      margin: 0 auto 2.5rem;
+      padding: 1.5rem 1.75rem;
+      background: linear-gradient(135deg, #F0F9F0, #E8F5E8);
+      border: 1px solid #C4E4C4;
+      border-radius: var(--radius-lg);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .trust-banner-icon {
+      flex-shrink: 0;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #4A8D4A;
+    }
+
+    .trust-banner-content {
+      flex: 1;
+    }
+
+    .trust-banner-title {
+      font-family: var(--font-ui);
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: #2D5F2D;
+      margin-bottom: 0.15rem;
+    }
+
+    .trust-banner-text {
+      font-family: var(--font-ui);
+      font-size: 0.88rem;
+      color: #4A6F4A;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 520px) {
+      .trust-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+
+    /* ══════════════════════════════════════════════
+       DEPOIMENTOS: WhatsApp prints
+    ══════════════════════════════════════════════ */
+    .depoimento-print {
+      background: #E5DDD5;
+      border-radius: var(--radius-xl);
+      padding: 0.75rem;
+      box-shadow: var(--shadow-card);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      overflow: hidden;
+    }
+
+    .depoimento-print:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .depoimento-print-header {
+      background: #075E54;
+      color: white;
+      padding: 0.6rem 0.9rem;
+      border-radius: var(--radius-md) var(--radius-md) 0 0;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-family: var(--font-ui);
+    }
+
+    .depoimento-print-avatar {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+
+    .depoimento-print-name {
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .depoimento-print-status {
+      font-size: 0.7rem;
+      opacity: 0.75;
+    }
+
+    .depoimento-print-body {
+      background:
+        linear-gradient(rgba(229, 221, 213, 0.88), rgba(229, 221, 213, 0.88)),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cg fill='%23D4CBC3' fill-opacity='0.4'%3E%3Ccircle cx='10' cy='10' r='1.5'/%3E%3Ccircle cx='30' cy='20' r='1.5'/%3E%3Ccircle cx='50' cy='10' r='1.5'/%3E%3Ccircle cx='20' cy='40' r='1.5'/%3E%3Ccircle cx='40' cy='50' r='1.5'/%3E%3C/g%3E%3C/svg%3E");
+      padding: 1rem 0.9rem;
+      border-radius: 0 0 var(--radius-md) var(--radius-md);
+      min-height: 200px;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .depoimento-print-msg {
+      background: #DCF8C6;
+      padding: 0.6rem 0.8rem;
+      border-radius: 8px 8px 0 8px;
+      align-self: flex-end;
+      max-width: 85%;
+      font-family: var(--font-ui);
+      font-size: 0.88rem;
+      color: #2A2625;
+      line-height: 1.45;
+      position: relative;
+      box-shadow: 0 1px 0.5px rgba(0, 0, 0, 0.08);
+    }
+
+    .depoimento-print-msg.received {
+      background: white;
+      align-self: flex-start;
+      border-radius: 8px 8px 8px 0;
+    }
+
+    .depoimento-print-time {
+      font-size: 0.65rem;
+      color: rgba(0, 0, 0, 0.45);
+      margin-top: 0.2rem;
+      text-align: right;
+    }
+
+    .depoimento-print-placeholder {
+      /* When João adds a real screenshot, just replace with <img> inside print-body */
+      background: white;
+      padding: 2.5rem 1.5rem;
+      border-radius: 0 0 var(--radius-md) var(--radius-md);
+      text-align: center;
+      color: var(--text-muted);
+      font-family: var(--font-ui);
+      font-size: 0.85rem;
+      font-style: italic;
+    }
+
+    /* Real screenshot container */
+    .depoimento-screenshot {
+      background: white;
+      border-radius: var(--radius-xl);
+      padding: 0.75rem;
+      box-shadow: var(--shadow-card);
+      overflow: hidden;
+    }
+
+    .depoimento-screenshot img {
+      width: 100%;
+      border-radius: var(--radius-md);
+      display: block;
+    }
+
+    /* ══════════════════════════════════════════════
+       NEW: PROCESS SCREENSHOTS
+    ══════════════════════════════════════════════ */
+    .como-screenshots {
+      max-width: 1040px;
+      margin: 2.5rem auto 0;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .como-screenshot {
+      background: white;
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      box-shadow: var(--shadow-card);
+      border: 1px solid var(--warm-300);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .como-screenshot:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .como-screenshot-img {
+      aspect-ratio: 9 / 16;
+      background: linear-gradient(135deg, var(--accent-ghost), var(--accent-wash));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .como-screenshot-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .como-screenshot-placeholder {
+      padding: 2rem;
+      text-align: center;
+      color: var(--accent-dark);
+      font-family: var(--font-ui);
+    }
+
+    .como-screenshot-placeholder svg {
+      opacity: 0.4;
+      margin-bottom: 0.75rem;
+    }
+
+    .como-screenshot-placeholder-text {
+      font-size: 0.78rem;
+      font-weight: 600;
+      opacity: 0.6;
+      letter-spacing: 0.02em;
+    }
+
+    .como-screenshot-label {
+      padding: 0.85rem 1rem;
+      text-align: center;
+    }
+
+    .como-screenshot-step {
+      font-family: var(--font-ui);
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.2rem;
+    }
+
+    .como-screenshot-title {
+      font-family: var(--font-ui);
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--text-primary);
+    }
+
+    @media (max-width: 768px) {
+      .como-screenshots {
+        grid-template-columns: 1fr;
+        max-width: 320px;
+      }
+    }
+
+    /* ══════════════════════════════════════════════
+       PACOTE MICROCOPY (zero compromisso)
+    ══════════════════════════════════════════════ */
+    .pacote-microcopy {
+      font-family: var(--font-ui);
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      text-align: center;
+      margin-top: 0.6rem;
+      line-height: 1.4;
+    }
+
+    .pacote-microcopy svg {
+      vertical-align: middle;
+      margin-right: 0.25rem;
+      color: #4A8D4A;
+    }
   </style>
 
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18093869167"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+    function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
 
     gtag('config', 'AW-18093869167');
@@ -1822,8 +2370,7 @@
         <span>Sua</span><br>Retrospectiva
       </div>
     </a>
-    <a href="#pacotes"
-      class="btn-primary">👉 Quero minha retrospectiva 👈</a>
+    <a href="#pacotes" class="btn-primary">👉 Quero minha retrospectiva 👈</a>
   </nav>
 
   <!-- ═══════════════ HERO ═══════════════ -->
@@ -1836,13 +2383,28 @@
           </svg>
           Retrospectivas personalizadas para momentos inesquecíveis
         </div>
-        <h1 class="headline-hero hero-animate hero-animate-d2">Retrospectiva animada personalizada para sua festa.<br>A emoção que <em>ninguém esquece</em>.</h1>
+        <h1 class="headline-hero hero-animate hero-animate-d2">Retrospectiva animada personalizada para sua festa.<br>A
+          emoção que <em>ninguém esquece</em>.</h1>
         <p class="hero-sub hero-animate hero-animate-d3">Transformamos suas fotos e vídeos em uma retrospectiva animada
           que vai fazer todo mundo parar, assistir e se emocionar.</p>
         <div class="hero-animate hero-animate-d4">
-          <a href="#pacotes"
-            class="btn-primary">👉 Quero minha retrospectiva 👈</a>
+          <a href="#pacotes" class="btn-primary">👉 Quero minha retrospectiva 👈</a>
           <p class="microcopy">Vagas limitadas por semana · Entrega personalizada</p>
+          <a href="https://instagram.com/sua.retrospectiva" target="_blank" rel="noopener" class="hero-instagram">
+            <span class="hero-instagram-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+              </svg>
+            </span>
+            <span class="hero-instagram-text">Veja mais sobre retrospectivas no <strong>@sua.retrospectiva</strong></span>
+            <svg class="hero-instagram-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6" />
+            </svg>
+          </a>
         </div>
       </div>
       <!-- <div class="hero-visual hero-mockup-animate">
@@ -1888,15 +2450,57 @@
       </p>
       <p class="prova-impact" data-reveal data-delay="2">Esse é o poder de uma retrospectiva feita com carinho.</p>
       <div data-reveal data-delay="3" style="margin-top:2rem;">
-        <video id="reactionVideo" controls playsinline preload="metadata"
-          controlslist="nodownload" disablepictureinpicture
-          oncontextmenu="return false;"
+        <video id="reactionVideo" controls playsinline preload="metadata" controlslist="nodownload"
+          disablepictureinpicture oncontextmenu="return false;"
           style="width:100%;max-width:280px;aspect-ratio:9/16;object-fit:cover;border-radius:var(--radius-lg);box-shadow:var(--shadow-lg);">
           <source src="video reacao 2 com logo.mp4" type="video/mp4">
         </video>
       </div>
       <div class="prova-divider" data-reveal data-delay="4"></div>
     </div>
+  </section>
+
+  <!-- ═══════════════ QUEM FAZ / FOUNDER ═══════════════ -->
+  <section class="founder" id="quem-faz">
+    <div class="founder-inner">
+      <div class="founder-media" data-reveal="fade-right">
+        <img src="quem-sou-eu-gabi.jpeg" alt="Gabi - Sua Retrospectiva">
+      </div>
+      <div class="founder-content" data-reveal="fade-left">
+        <div class="founder-badge">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="4"/></svg>
+          Quem faz
+        </div>
+        <h2 class="founder-title">Oi, eu sou o <em>Gabi</em>. Cada retrospectiva passa pelas minhas mãos.</h2>
+        <p class="founder-text">
+          Criei a Sua Retrospectiva porque acredito que algumas memórias merecem mais do que um álbum esquecido no celular.
+          Quando vi a reação das primeiras famílias, os olhos marejados e o silêncio antes do aplauso, entendi que isso não é
+          sobre editar vídeos. É sobre transformar lembrança em emoção.
+        </p>
+        <p class="founder-text">
+          Por isso não terceirizo nada. Cada escolha de foto, cada transição, cada trilha sonora é pensada para contar a
+          história da sua família do jeito mais verdadeiro possível.
+        </p>
+        <div class="founder-signature">— Gabi, criadora da Sua Retrospectiva</div>
+      </div>
+    </div>
+
+    <!-- Vídeo do fundador -->
+    <!--<div class="founder-video-wrap" data-reveal>
+      <div class="founder-video-placeholder">
+         ADICIONE AQUI SEU VÍDEO PESSOAL:
+        <video controls playsinline preload="metadata" style="width:100%;height:100%;border-radius:var(--radius-xl);object-fit:cover;">
+          <source src="video-joao.mp4" type="video/mp4">
+        </video>
+        <div class="play-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+            <polygon points="7,4 20,12 7,20" />
+          </svg>
+        </div>
+        <div class="founder-video-placeholder-note">[ ADICIONE AQUI SEU VÍDEO PESSOAL DE APRESENTAÇÃO ]</div>
+      </div>
+      <p class="founder-video-caption">Conheça quem está por trás de cada retrospectiva.</p>
+    </div> -->
   </section>
 
   <!-- ═══════════════ IDENTIFICAÇÃO ═══════════════ -->
@@ -1930,7 +2534,7 @@
   </section> -->
 
   <!-- ═══════════════ COMO FUNCIONA ═══════════════ -->
-  <section class="como-funciona">
+  <section class="como-funciona" id="como-funciona">
     <div class="como-header">
       <h2 class="headline-section" data-reveal>Como funciona sua retrospectiva animada?</h2>
       <p class="como-sub" data-reveal data-delay="1">Você cuida da comemoração. A gente cuida da emoção.</p>
@@ -1962,7 +2566,8 @@
           </svg>
         </div>
         <h3 class="como-gallery-title">Preencha o formulário online</h3>
-        <p class="como-gallery-desc">Envie suas fotos, vídeos e conte sobre sua história diretamente pelo nosso formulário.</p>
+        <p class="como-gallery-desc">Envie suas fotos, vídeos e conte sobre sua história diretamente pelo nosso
+          formulário.</p>
       </div>
       <div class="como-gallery-item" data-reveal data-delay="3">
         <div class="como-gallery-number">03</div>
@@ -1988,6 +2593,41 @@
         <p class="como-gallery-desc">Pronta para emocionar no grande dia. Com revisão inclusa.</p>
       </div>
     </div>
+
+    <!-- Screenshots reais do processo -->
+    <div class="como-screenshots" data-reveal>
+      <div class="como-screenshot">
+        <div class="como-screenshot-img">
+          <!-- <img src="formulario-print.png" alt="Formulário"> -->
+          <img src="formulario-print.png" alt="Formulário">
+        </div>
+        <div class="como-screenshot-label">
+          <div class="como-screenshot-step">Passo 1</div>
+          <div class="como-screenshot-title">Envio das fotos</div>
+        </div>
+      </div>
+
+      <div class="como-screenshot">
+        <div class="como-screenshot-img">
+          <!-- <img src="passo 2.jpeg" alt="Atendimento WhatsApp"> -->
+          <img src="passo 2.jpeg" alt="Atendimento WhatsApp">
+        </div>
+        <div class="como-screenshot-label">
+          <div class="como-screenshot-step">Passo 2</div>
+          <div class="como-screenshot-title">Atendimento 1 a 1</div>
+        </div>
+      </div>
+
+      <div class="como-screenshot">
+        <div class="como-screenshot-img">
+          <img src="passo 3.jpeg" alt="Edição">
+        </div>
+        <div class="como-screenshot-label">
+          <div class="como-screenshot-step">Passo 3</div>
+          <div class="como-screenshot-title">Edição artesanal</div>
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- Wave to portfolio -->
@@ -1997,18 +2637,17 @@
   </svg>
 
   <!-- ═══════════════ PORTFÓLIO ═══════════════ -->
-  <section class="portfolio">
+  <section class="portfolio" id="portfolio">
     <div class="portfolio-header">
       <h2 class="headline-section" data-reveal>Retrospectivas animadas para cada tipo de <em
           style="font-style:italic;color:var(--accent);">celebração</em></h2>
-      <p class="portfolio-sub" data-reveal data-delay="1">Veja exemplos de retrospectivas para festas de aniversário, bodas e momentos especiais.</p>
+      <p class="portfolio-sub" data-reveal data-delay="1">Veja exemplos de retrospectivas para festas de aniversário,
+        bodas e momentos especiais.</p>
     </div>
     <div class="portfolio-grid">
       <div class="portfolio-item" data-reveal data-delay="1">
         <div class="portfolio-media">
-          <iframe
-            src="https://www.youtube.com/embed/UZ7b3YMzkRc?rel=0"
-            title="Portfólio - Festa de 1 ano Nathan"
+          <iframe src="https://www.youtube.com/embed/UZ7b3YMzkRc?rel=0" title="Portfólio - Festa de 1 ano Nathan"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowfullscreen>
           </iframe>
@@ -2017,9 +2656,7 @@
       </div>
       <div class="portfolio-item" data-reveal data-delay="2">
         <div class="portfolio-media">
-          <iframe
-            src="https://www.youtube.com/embed/G-Qci2piOTk?rel=0"
-            title="Portfólio - Festa de 2 anos Lara"
+          <iframe src="https://www.youtube.com/embed/G-Qci2piOTk?rel=0" title="Portfólio - Festa de 2 anos Lara"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowfullscreen>
           </iframe>
@@ -2038,8 +2675,27 @@
     <div style="text-align:center;margin-bottom:2.5rem;">
       <div class="badge" data-reveal>✦ Escolha seu pacote</div>
       <h2 class="oferta-headline" data-reveal data-delay="1">Quanto custa uma retrospectiva animada?</h2>
-      <p class="oferta-sub" data-reveal data-delay="2">Pacotes para todos os tipos de festa. Escolha o que combina com sua celebração.</p>
+      <p class="oferta-sub" data-reveal data-delay="2">Pacotes para todos os tipos de festa. Escolha o que combina com
+        sua celebração.</p>
     </div>
+
+    <!-- Trust banner: zero compromisso -->
+    <div class="trust-banner" data-reveal>
+      <div class="trust-banner-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+          <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+        </svg>
+      </div>
+      <div class="trust-banner-content">
+        <div class="trust-banner-title">Zero compromisso financeiro agora</div>
+        <div class="trust-banner-text">Escolher um pacote e preencher o formulário é <strong>100% gratuito</strong>.
+          Nenhum pagamento é cobrado no site, o valor e a forma de pagamento são combinados por WhatsApp, só depois que
+          você aprovar.</div>
+      </div>
+    </div>
+
     <div class="pacotes-grid">
       <!-- BÁSICO -->
       <div class="pacote-card" data-reveal data-delay="1">
@@ -2069,13 +2725,19 @@
               <polyline points="20 6 9 17 4 12" />
             </svg>Transições animadas</li>
         </ul>
-        <a href="formulario.html?pacote=basico" class="btn-secondary pacote-btn">Quero este pacote</a>
+        <a href="formulario.html?pacote=basico" class="btn-secondary pacote-btn">Solicitar orçamento (grátis) →</a>
+        <p class="pacote-microcopy"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2.5" stroke-linecap="round">
+            <polyline points="20 6 9 17 4 12" />
+          </svg>Sem pagamento no site</p>
       </div>
 
       <!-- SIMPLES -->
       <div class="pacote-card" data-reveal data-delay="2">
         <div class="pacote-nome">Simples</div>
-        <div class="pacote-preco"><span style="text-decoration:line-through;font-size:0.6em;color:var(--text-muted);font-weight:400;">R$ 99,90</span> R$ 89,90</div>
+        <div class="pacote-preco"><span
+            style="text-decoration:line-through;font-size:0.6em;color:var(--text-muted);font-weight:400;">R$
+            99,90</span> R$ 89,90</div>
         <div class="pacote-destaques">
           <div class="pacote-destaque-item">
             <div class="pacote-destaque-valor">50</div>
@@ -2100,13 +2762,21 @@
               <polyline points="20 6 9 17 4 12" />
             </svg>Transições animadas</li>
         </ul>
-        <a href="formulario.html?pacote=simples" class="btn-secondary pacote-btn">Quero este pacote</a>
+        <a href="formulario.html?pacote=simples" class="btn-secondary pacote-btn">Solicitar orçamento (grátis) →</a>
+        <p class="pacote-microcopy"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2.5" stroke-linecap="round">
+            <polyline points="20 6 9 17 4 12" />
+          </svg>Sem pagamento no site</p>
       </div>
 
       <!-- ESPECIAL -->
       <div class="pacote-card destaque" data-reveal data-delay="3">
         <div class="pacote-nome">Especial</div>
-        <div class="pacote-preco"><span style="text-decoration:line-through;font-size:0.6em;color:var(--text-muted);font-weight:400;">R$ 179,90</span> R$ 149,90 <span style="display:inline-block;background:var(--accent);color:#fff;font-size:0.4em;font-weight:600;padding:0.2em 0.5em;border-radius:4px;vertical-align:middle;margin-left:0.2em;">-20%</span></div>
+        <div class="pacote-preco"><span
+            style="text-decoration:line-through;font-size:0.6em;color:var(--text-muted);font-weight:400;">R$
+            179,90</span> R$ 149,90 <span
+            style="display:inline-block;background:var(--accent);color:#fff;font-size:0.4em;font-weight:600;padding:0.2em 0.5em;border-radius:4px;vertical-align:middle;margin-left:0.2em;">-20%</span>
+        </div>
         <div class="pacote-destaques">
           <div class="pacote-destaque-item">
             <div class="pacote-destaque-valor">100</div>
@@ -2131,7 +2801,11 @@
               <polyline points="20 6 9 17 4 12" />
             </svg>Transições animadas</li>
         </ul>
-        <a href="formulario.html?pacote=especial" class="btn-secondary pacote-btn">Quero este pacote</a>
+        <a href="formulario.html?pacote=especial" class="btn-secondary pacote-btn">Solicitar orçamento (grátis) →</a>
+        <p class="pacote-microcopy"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2.5" stroke-linecap="round">
+            <polyline points="20 6 9 17 4 12" />
+          </svg>Sem pagamento no site</p>
       </div>
 
       <!-- PREMIUM -->
@@ -2162,65 +2836,80 @@
               <polyline points="20 6 9 17 4 12" />
             </svg>Transições animadas</li>
         </ul>
-        <a href="formulario.html?pacote=premium" class="btn-secondary pacote-btn">Quero este pacote</a>
+        <a href="formulario.html?pacote=premium" class="btn-secondary pacote-btn">Solicitar orçamento (grátis) →</a>
+        <p class="pacote-microcopy"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2.5" stroke-linecap="round">
+            <polyline points="20 6 9 17 4 12" />
+          </svg>Sem pagamento no site</p>
       </div>
     </div>
   </section>
 
   <!-- ═══════════════ DEPOIMENTOS ═══════════════ -->
-  <section class="depoimentos">
+  <section class="depoimentos" id="depoimentos">
     <div class="depoimentos-header">
-      <h2 class="headline-section" data-reveal>Depoimentos de famílias que encomendaram sua retrospectiva animada</h2>
+      <h2 class="headline-section" data-reveal>O que as famílias nos mandaram depois da festa</h2>
+      <p class="portfolio-sub" data-reveal data-delay="1">Reações reais recebidas por WhatsApp após a entrega.</p>
     </div>
     <div class="depoimentos-grid">
-      <div class="depoimento-card" data-reveal="fade-left" data-delay="1">
-        <span class="depoimento-aspas" aria-hidden="true">"</span>
-        <p class="depoimento-text">Quando o vídeo começou na festa do meu filho, eu não consegui segurar as lágrimas. Os
-          convidados ficaram emocionados. Foi o momento mais especial da noite.</p>
-        <div class="depoimento-author">
-          <div class="depoimento-avatar">CR</div>
+
+      <!-- PRINT 1 -->
+      <div class="depoimento-print" data-reveal="fade-left" data-delay="1">
+        <!-- SUBSTITUA o bloco abaixo por: <div class="depoimento-screenshot"><img src="print-whatsapp-1.jpg" alt="Depoimento"></div> -->
+         <div class="depoimento-screenshot"><img src="depoimento 1.jpeg" alt="Depoimento"></div>
+        <!-- <div class="depoimento-print-header">
+          <div class="depoimento-print-avatar">C</div>
           <div>
-            <div class="depoimento-name">Camila R.</div>
-            <div class="depoimento-context">Mãe do Pedro, festa de 1 ano</div>
+            <div class="depoimento-print-name">Camila</div>
+            <div class="depoimento-print-status">online</div>
           </div>
         </div>
+        <div class="depoimento-print-body">
+          <div class="depoimento-print-placeholder">
+            [ ADICIONE AQUI O PRINT<br>DA CONVERSA NO WHATSAPP ]
+          </div>
+        </div>-->
+      </div> 
+
+      <!-- PRINT 2 -->
+      <div class="depoimento-print" data-reveal="fade-left" data-delay="2">
+        <div class="depoimento-screenshot"><img src="depoimento 2.jpeg" alt="Depoimento"></div>
       </div>
-      <div class="depoimento-card" data-reveal="fade-left" data-delay="2">
-        <span class="depoimento-aspas" aria-hidden="true">"</span>
-        <p class="depoimento-text">Eu achei que seria só um vídeo bonito, mas foi muito mais. Minha família inteira se
-          emocionou. Minha mãe me agradeceu chorando.</p>
-        <div class="depoimento-author">
-          <div class="depoimento-avatar">JM</div>
+
+      <!-- PRINT 3 -->
+      <div class="depoimento-print" data-reveal="fade-left" data-delay="3">
+        <div class="depoimento-screenshot"><img src="depoimento 3.jpeg" alt="Depoimento"></div>
+        <!-- <div class="depoimento-print-header">
+          <div class="depoimento-print-avatar">R</div>
           <div>
-            <div class="depoimento-name">Juliana M.</div>
-            <div class="depoimento-context">Aniversário de 30 anos do marido</div>
+            <div class="depoimento-print-name">Rafael</div>
+            <div class="depoimento-print-status">online</div>
           </div>
         </div>
+        <div class="depoimento-print-body">
+          <div class="depoimento-print-placeholder">
+            [ ADICIONE AQUI O PRINT<br>DA CONVERSA NO WHATSAPP ]
+          </div>
+        </div> -->
       </div>
-      <div class="depoimento-card" data-reveal="fade-left" data-delay="3">
-        <span class="depoimento-aspas" aria-hidden="true">"</span>
-        <p class="depoimento-text">O processo foi tão simples que eu não acreditei. Mandei as fotos, respondi umas
-          perguntas, e recebi uma obra de arte. Super recomendo.</p>
-        <div class="depoimento-author">
-          <div class="depoimento-avatar">RS</div>
+
+      <!-- PRINT 4 -->
+      <div class="depoimento-print" data-reveal="fade-left" data-delay="4">
+        <div class="depoimento-screenshot"><img src="depoimento 4.jpeg" alt="Depoimento"></div>
+        <!-- <div class="depoimento-print-header">
+          <div class="depoimento-print-avatar">A</div>
           <div>
-            <div class="depoimento-name">Rafael S.</div>
-            <div class="depoimento-context">Pai da Isabela, festa de 1 ano</div>
+            <div class="depoimento-print-name">Ana</div>
+            <div class="depoimento-print-status">online</div>
           </div>
         </div>
-      </div>
-      <div class="depoimento-card" data-reveal="fade-left" data-delay="4">
-        <span class="depoimento-aspas" aria-hidden="true">"</span>
-        <p class="depoimento-text">A Sua Retrospectiva fez o momento mais marcante da festa dos meus pais. Todos os
-          convidados pediram para assistir de novo.</p>
-        <div class="depoimento-author">
-          <div class="depoimento-avatar">AL</div>
-          <div>
-            <div class="depoimento-name">Ana L.</div>
-            <div class="depoimento-context">Homenagem de bodas de prata</div>
+        <div class="depoimento-print-body">
+          <div class="depoimento-print-placeholder">
+            [ ADICIONE AQUI O PRINT<br>DA CONVERSA NO WHATSAPP ]
           </div>
-        </div>
+        </div>   -->
       </div>
+
     </div>
     <div class="depoimentos-cta" data-reveal>
       <a href="#pacotes" class="btn-primary">Quero minha retrospectiva →</a>
@@ -2311,7 +3000,7 @@
   </section>
 
   <!-- ═══════════════ FAQ ═══════════════ -->
-  <section class="faq">
+  <section class="faq" id="faq">
     <div class="faq-header">
       <h2 class="headline-section" data-reveal>Dúvidas frequentes sobre retrospectiva animada</h2>
     </div>
@@ -2326,7 +3015,8 @@
           </svg>
         </button>
         <div class="faq-answer">
-          <p class="faq-answer-text">Os pacotes começam em R$49,90 (Básico com 40 fotos) e vão até R$219,90 (Premium com 150 fotos e 12 vídeos). Todos incluem abertura personalizada e transições animadas.</p>
+          <p class="faq-answer-text">Os pacotes começam em R$49,90 (Básico com 40 fotos) e vão até R$219,90 (Premium com
+            150 fotos e 12 vídeos). Todos incluem abertura personalizada e transições animadas.</p>
         </div>
       </div>
       <div class="faq-item">
@@ -2352,7 +3042,8 @@
           </svg>
         </button>
         <div class="faq-answer">
-          <p class="faq-answer-text">Ao escolher seu pacote, você será direcionado para nosso formulário online onde pode enviar tudo diretamente pelo celular. Rápido e sem complicação.</p>
+          <p class="faq-answer-text">Ao escolher seu pacote, você será direcionado para nosso formulário online onde
+            pode enviar tudo diretamente pelo celular. Rápido e sem complicação.</p>
         </div>
       </div>
       <div class="faq-item">
@@ -2454,9 +3145,8 @@
       <p class="cta-final-sub" data-reveal data-delay="1">Reserve sua retrospectiva agora e transforme o momento mais
         especial da festa em algo que ninguém vai esquecer.</p>
       <div data-reveal data-delay="2">
-        <a href="#pacotes"
-          class="btn-primary cta-final-btn"
-          style="font-size:1.1rem;padding:1.15rem 3rem;">Quero emocionar minha família →</a>
+        <a href="#pacotes" class="btn-primary cta-final-btn" style="font-size:1.1rem;padding:1.15rem 3rem;">Quero
+          emocionar minha família →</a>
         <p class="microcopy">Atendimento personalizado · Vagas limitadas por semana</p>
       </div>
       <!-- Small logo -->
@@ -2527,6 +3217,17 @@
   <div class="mobile-sticky-cta">
     <a href="#pacotes" class="btn-primary">Quero minha retrospectiva →</a>
   </div>
+
+  <!-- ═══════════════ INSTAGRAM FLOAT ═══════════════ -->
+  <a href="https://instagram.com/sua.retrospectiva" class="instagram-float" target="_blank" rel="noopener"
+    title="Siga no Instagram">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+      <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+    </svg>
+  </a>
 
   <!-- ═══════════════ WHATSAPP FLOAT ═══════════════ -->
   <a href="https://wa.me/551333041011?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20retrospectiva%20animada"

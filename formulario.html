@@ -421,6 +421,44 @@
       background: var(--accent-hover);
       transform: scale(1.02);
     }
+
+    /* Trust banner dentro do formulário */
+    .form-trust-banner {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.85rem;
+      padding: 1rem 1.15rem;
+      background: linear-gradient(135deg, #F0F9F0, #E8F5E8);
+      border: 1px solid #C4E4C4;
+      border-radius: var(--radius-md);
+      margin-bottom: 1.5rem;
+    }
+    .form-trust-icon {
+      flex-shrink: 0;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #4A8D4A;
+    }
+    .form-trust-content {
+      flex: 1;
+      font-family: var(--font-ui);
+    }
+    .form-trust-title {
+      font-weight: 700;
+      font-size: 0.88rem;
+      color: #2D5F2D;
+      margin-bottom: 0.15rem;
+    }
+    .form-trust-text {
+      font-size: 0.82rem;
+      color: #4A6F4A;
+      line-height: 1.5;
+    }
   </style>
 </head>
 <body>
@@ -449,6 +487,18 @@
 
       <!-- STEP 1: Dados pessoais + evento -->
       <div class="form-step active" id="step1">
+        <div class="form-trust-banner">
+          <div class="form-trust-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+            </svg>
+          </div>
+          <div class="form-trust-content">
+            <div class="form-trust-title">Não cobramos nada agora</div>
+            <div class="form-trust-text">Preencher é <strong>100% gratuito e sem compromisso</strong>. O pagamento só é combinado depois, por WhatsApp, quando você aprovar.</div>
+          </div>
+        </div>
         <div class="form-row">
           <div class="form-group">
             <label class="form-label" for="fNome">Seu nome *</label>
@@ -574,11 +624,11 @@
       <div class="form-step" id="step3">
         <div class="form-summary" id="formReview"></div>
         <p style="font-family:var(--font-ui);font-size:0.85rem;color:var(--text-muted);line-height:1.6;margin-top:0.75rem;">
-          Ao enviar, você receberá um e-mail de confirmação. Em seguida, entraremos em contato pelo WhatsApp para combinar o pagamento e alinhar os detalhes finais.
+          <strong>Nenhuma cobrança será feita agora.</strong> Você recebe uma confirmação por e-mail e, em seguida, entramos em contato pelo WhatsApp para alinhar os últimos detalhes e combinar a forma de pagamento — só depois que tudo estiver aprovado por você.
         </p>
         <div class="form-nav">
           <button class="form-btn-back" onclick="prevStep(3)">← Voltar</button>
-          <button class="form-btn-submit" id="btnSubmit" onclick="submitForm()">Enviar pedido ✓</button>
+          <button class="form-btn-submit" id="btnSubmit" onclick="submitForm()">Enviar sem compromisso ✓</button>
         </div>
       </div>
 
@@ -851,7 +901,7 @@
         document.getElementById('formSuccessSummary').innerHTML = document.getElementById('formReview').innerHTML;
         showStep(4);
         btn.disabled = false;
-        btn.textContent = 'Enviar pedido ✓';
+        btn.textContent = 'Enviar sem compromisso ✓';
         gtag('event', 'conversion', {
           'send_to': 'AW-18093869167/Hki0CO_k9pwcEO-Q6rND',
           'value': parseFloat(p.preco.replace('R$ ', '').replace(',', '.')),
@@ -862,7 +912,7 @@
         console.error('Erro:', err);
         alert('Ocorreu um erro ao enviar. Por favor, tente novamente ou entre em contato pelo WhatsApp.');
         btn.disabled = false;
-        btn.textContent = 'Enviar pedido ✓';
+        btn.textContent = 'Enviar sem compromisso ✓';
       });
     }
 
