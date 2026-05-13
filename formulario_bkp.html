@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Solicitar Orçamento | Sua Retrospectiva</title>
+  <title>Montar Retrospectiva | Sua Retrospectiva</title>
   <meta name="robots" content="noindex, nofollow">
   <link rel="icon" type="image/png" href="logo.png">
   <link rel="apple-touch-icon" href="logo.png">
@@ -464,7 +464,7 @@
 <body>
 
   <header class="form-topbar">
-    <a href="index.html#pacotes" class="form-back-link" id="formBackLink">
+    <a href="index.html#pacotes" class="form-back-link">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg>
       Voltar
     </a>
@@ -475,7 +475,7 @@
     <div class="form-container">
       <div class="form-header">
         <div class="form-pacote-tag" id="formPacoteTag">Pacote Especial</div>
-        <h1 id="formTitle">Monte sua retrospectiva</h1>
+        <h1>Monte sua retrospectiva</h1>
       </div>
 
       <div class="form-progress">
@@ -530,22 +530,6 @@
               <option value="despedida">Despedida</option>
               <option value="outro">Outro</option>
             </select>
-            <select class="form-select" id="fTipoEventoConvite" required style="display:none;">
-              <option value="">Selecione...</option>
-              <option value="aniversario_1_ano">Aniversário de 1 ano</option>
-              <option value="aniversario_infantil">Aniversário infantil</option>
-              <option value="aniversario_adulto">Aniversário adulto</option>
-              <option value="15_anos">15 anos / Debutante</option>
-              <option value="casamento">Casamento</option>
-              <option value="bodas">Bodas</option>
-              <option value="cha_bebe">Chá de bebê</option>
-              <option value="cha_revelacao">Chá revelação</option>
-              <option value="batizado">Batizado</option>
-              <option value="formatura">Formatura</option>
-              <option value="despedida">Despedida</option>
-              <option value="corporativo">Corporativo</option>
-              <option value="outro">Outro</option>
-            </select>
             <div class="form-error-msg" id="errTipoEvento">Selecione o tipo de evento</div>
           </div>
           <div class="form-group">
@@ -555,31 +539,10 @@
           </div>
         </div>
         <div class="form-group">
-          <label class="form-label" for="fHomenageado"><span id="lblHomenageado">Nome do(a) homenageado(a)</span> *</label>
+          <label class="form-label" for="fHomenageado">Nome do(a) homenageado(a) *</label>
           <input class="form-input" type="text" id="fHomenageado" placeholder="Pedro" required>
           <div class="form-error-msg" id="errHomenageado">Informe o nome</div>
         </div>
-
-        <!-- Campos extras só pra convite -->
-        <div id="conviteExtraStep1" style="display:none;">
-          <div class="form-row">
-            <div class="form-group">
-              <label class="form-label" for="fHorarioEvento">Horário da festa *</label>
-              <input class="form-input" type="time" id="fHorarioEvento">
-              <div class="form-error-msg" id="errHorarioEvento">Informe o horário</div>
-            </div>
-            <div class="form-group">
-              <label class="form-label" for="fAnfitriao">Quem está convidando? <span class="form-label-hint">(opcional)</span></label>
-              <input class="form-input" type="text" id="fAnfitriao" placeholder="Ex: Mariana e família">
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="fLocalEvento">Local da festa *</label>
-            <input class="form-input" type="text" id="fLocalEvento" placeholder="Salão de festas Encantos, Av. Brasil 1234, Praia Grande/SP">
-            <div class="form-error-msg" id="errLocalEvento">Informe o local</div>
-          </div>
-        </div>
-
         <div class="form-nav">
           <div></div>
           <button class="form-btn-next" onclick="nextStep(1)">Próximo →</button>
@@ -588,69 +551,36 @@
 
       <!-- STEP 2: Preferências + Upload -->
       <div class="form-step" id="step2">
-
-        <!-- ═══ Campos de RETROSPECTIVA ═══ -->
-        <div id="retroFields">
-          <div class="form-group">
-            <label class="form-label" for="fMusica">Música desejada <span class="form-label-hint">(opcional)</span></label>
-            <input class="form-input" type="text" id="fMusica" placeholder="Ex: Perfect - Ed Sheeran">
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="fMensagem">Mensagem especial <span class="form-label-hint">(opcional — aparece na retrospectiva)</span></label>
-            <textarea class="form-textarea" id="fMensagem" placeholder="Uma mensagem carinhosa para o homenageado..."></textarea>
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="fTransicoesDesenhos">Deseja transições de desenhos animados? *</label>
-            <select class="form-select" id="fTransicoesDesenhos">
-              <option value="">Selecione...</option>
-              <option value="Sim">Sim</option>
-              <option value="Não">Não</option>
-            </select>
-            <div class="form-error-msg" id="errTransicoesDesenhos">Selecione uma opção</div>
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="fRestricaoDesenho">Há sugestão ou restrição de desenho? <span class="form-label-hint">(opcional)</span></label>
-            <textarea class="form-textarea" id="fRestricaoDesenho" placeholder="Ex: pode usar Disney e evitar Peppa Pig"></textarea>
-          </div>
+        <div class="form-group">
+          <label class="form-label" for="fMusica">Música desejada <span class="form-label-hint">(opcional)</span></label>
+          <input class="form-input" type="text" id="fMusica" placeholder="Ex: Perfect - Ed Sheeran">
         </div>
-
-        <!-- ═══ Campos de CONVITE ═══ -->
-        <div id="conviteFields" style="display:none;">
-          <div class="form-group">
-            <label class="form-label" for="fTema">Tema / Estilo da festa *</label>
-            <input class="form-input" type="text" id="fTema" placeholder="Ex: Patrulha Canina, Boho, Princesas, Tropical...">
-            <div class="form-error-msg" id="errTema">Informe o tema ou estilo</div>
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="fCores">Cores preferidas <span class="form-label-hint">(opcional)</span></label>
-            <input class="form-input" type="text" id="fCores" placeholder="Ex: rosa e dourado, azul e branco">
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="fFraseConvite">Frase ou mensagem do convite <span class="form-label-hint">(opcional)</span></label>
-            <textarea class="form-textarea" id="fFraseConvite" placeholder="Ex: Com muito carinho, convidamos você para celebrar conosco esse momento especial!"></textarea>
-          </div>
-          <div class="form-group" id="grupoMusicaConvite" style="display:none;">
-            <label class="form-label" for="fMusicaConvite">Música para o convite animado <span class="form-label-hint">(opcional)</span></label>
-            <input class="form-input" type="text" id="fMusicaConvite" placeholder="Ex: trilha alegre, Baby Shark, música tema do desenho">
-          </div>
-          <div class="form-group" id="grupoRsvpConvite" style="display:none;">
-            <label class="form-label" for="fRsvpData">Prazo para confirmação de presença (RSVP) <span class="form-label-hint">(opcional)</span></label>
-            <input class="form-input" type="date" id="fRsvpData">
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="fObservacoes">Observações adicionais <span class="form-label-hint">(opcional)</span></label>
-            <textarea class="form-textarea" id="fObservacoes" placeholder="Ex: levar agasalho, traje esporte fino, sem presentes..."></textarea>
-          </div>
+        <div class="form-group">
+          <label class="form-label" for="fMensagem">Mensagem especial <span class="form-label-hint">(opcional — aparece na retrospectiva)</span></label>
+          <textarea class="form-textarea" id="fMensagem" placeholder="Uma mensagem carinhosa para o homenageado..."></textarea>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="fTransicoesDesenhos">Deseja transições de desenhos animados? *</label>
+          <select class="form-select" id="fTransicoesDesenhos" required>
+            <option value="">Selecione...</option>
+            <option value="Sim">Sim</option>
+            <option value="Não">Não</option>
+          </select>
+          <div class="form-error-msg" id="errTransicoesDesenhos">Selecione uma opção</div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="fRestricaoDesenho">Há sugestão ou restrição de desenho? <span class="form-label-hint">(opcional)</span></label>
+          <textarea class="form-textarea" id="fRestricaoDesenho" placeholder="Ex: pode usar Disney e evitar Peppa Pig"></textarea>
         </div>
 
         <div class="form-group">
-          <label class="form-label" id="lblUploadFotos">Fotos * <span class="form-label-hint" id="fFotosLimit">(máx. 40)</span></label>
+          <label class="form-label">Fotos * <span class="form-label-hint" id="fFotosLimit">(máx. 40)</span></label>
           <div class="form-upload-area" id="uploadFotos">
             <input type="file" id="inputFotos" accept="image/*" multiple>
             <div class="form-upload-icon">
               <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
             </div>
-            <div class="form-upload-text"><strong>Toque para selecionar</strong> <span id="lblUploadFotosTxt">ou arraste as fotos</span></div>
+            <div class="form-upload-text"><strong>Toque para selecionar</strong> ou arraste as fotos</div>
             <div class="form-upload-hint">JPG, PNG · máx. 15MB por foto</div>
           </div>
           <div class="form-file-list" id="listFotos"></div>
@@ -718,125 +648,36 @@
   </main>
 
   <script>
-    // ═══════════════════════════════════════════════════
-    // CONFIGURAÇÃO DE PRODUTOS E PACOTES
-    // ═══════════════════════════════════════════════════
-    const PRODUTOS = {
-      retrospectiva: {
-        titulo: 'Monte sua retrospectiva',
-        backUrl: 'index.html#pacotes',
-        pacotes: {
-          basico:   { nome: 'Básico',   preco: 'R$ 49,90',  fotos: 40,  videos: 0,  duracao: '4 min' },
-          simples:  { nome: 'Simples',  preco: 'R$ 89,90',  fotos: 50,  videos: 4,  duracao: '5 min' },
-          especial: { nome: 'Especial', preco: 'R$ 149,90', fotos: 100, videos: 8,  duracao: '7 min' },
-          premium:  { nome: 'Premium',  preco: 'R$ 219,90', fotos: 150, videos: 12, duracao: '10 min' }
-        },
-        pacoteDefault: 'especial'
-      },
-      convite: {
-        titulo: 'Solicite seu convite',
-        backUrl: 'convites.html#pacotes',
-        pacotes: {
-          essencial:  { nome: 'Essencial', preco: 'R$ 39,90',  tipo: 'estatico',   precisaMusica: false, temRsvp: false, fotosMax: 3 },
-          animado:    { nome: 'Animado',   preco: 'R$ 79,90',  tipo: 'animado',    precisaMusica: true,  temRsvp: false, fotosMax: 3 },
-          interativo: { nome: 'Interativo',preco: 'R$ 129,90', tipo: 'interativo', precisaMusica: false, temRsvp: true,  fotosMax: 3 },
-          completo:   { nome: 'Completo',  preco: 'R$ 179,90', tipo: 'completo',   precisaMusica: true,  temRsvp: true,  fotosMax: 3 }
-        },
-        pacoteDefault: 'animado'
-      }
+    const PACOTES = {
+      basico:   { nome: 'Básico',   preco: 'R$ 49,90',  fotos: 40,  videos: 0,  duracao: '4 min' },
+      simples:  { nome: 'Simples',  preco: 'R$ 89,90',  fotos: 50,  videos: 4,  duracao: '5 min' },
+      especial: { nome: 'Especial', preco: 'R$ 149,90', fotos: 100, videos: 8,  duracao: '7 min' },
+      premium:  { nome: 'Premium',  preco: 'R$ 219,90', fotos: 150, videos: 12, duracao: '10 min' }
     };
 
-    // ── Read product + package from URL ──
-    const urlParams = new URLSearchParams(window.location.search);
-    const produtoParam = (urlParams.get('produto') || 'retrospectiva').toLowerCase();
-    let currentProduto = PRODUTOS[produtoParam] ? produtoParam : 'retrospectiva';
-
-    const produtoConfig = PRODUTOS[currentProduto];
-    const validPacotes = Object.keys(produtoConfig.pacotes);
-    const pacoteParam = urlParams.get('pacote') || produtoConfig.pacoteDefault;
-    let currentPacote = validPacotes.includes(pacoteParam) ? pacoteParam : produtoConfig.pacoteDefault;
-
-    // Atalho para acessar config do pacote atual
-    function getPacoteAtual() {
-      return PRODUTOS[currentProduto].pacotes[currentPacote];
-    }
-
-    // Backward compatibility: PACOTES (algumas funções podem referenciar)
-    const PACOTES = produtoConfig.pacotes;
-
+    let currentPacote = 'especial';
     let currentStep = 1;
     let uploadedFotos = [];
     let uploadedVideos = [];
     let uploadedMusica = [];
 
+    // ── Read package from URL ──
+    const urlParams = new URLSearchParams(window.location.search);
+    const pacoteParam = urlParams.get('pacote') || 'especial';
+    const validPacotes = ['basico', 'simples', 'especial', 'premium'];
+    currentPacote = validPacotes.includes(pacoteParam) ? pacoteParam : 'especial';
+
     function initForm() {
-      const p = getPacoteAtual();
-      const isConvite = (currentProduto === 'convite');
-
-      // ── Header e back link ──
-      document.title = isConvite
-        ? 'Solicitar Convite | Sua Retrospectiva'
-        : 'Montar Retrospectiva | Sua Retrospectiva';
-      document.getElementById('formTitle').textContent = PRODUTOS[currentProduto].titulo;
-      document.getElementById('formBackLink').href = PRODUTOS[currentProduto].backUrl;
+      const p = PACOTES[currentPacote];
       document.getElementById('formPacoteTag').textContent = 'Pacote ' + p.nome + ' · ' + p.preco;
+      document.getElementById('fFotosLimit').textContent = '(máx. ' + p.fotos + ')';
 
-      // ── Step 1: tipo de evento e campos extras ──
-      const selectRetro = document.getElementById('fTipoEvento');
-      const selectConvite = document.getElementById('fTipoEventoConvite');
-      if (isConvite) {
-        selectRetro.style.display = 'none';
-        selectRetro.removeAttribute('required');
-        selectConvite.style.display = '';
-        selectConvite.setAttribute('required', 'required');
-        document.getElementById('conviteExtraStep1').style.display = '';
-        document.getElementById('lblHomenageado').textContent = 'Nome do(a) aniversariante/homenageado(a)';
-      } else {
-        selectRetro.style.display = '';
-        selectRetro.setAttribute('required', 'required');
-        selectConvite.style.display = 'none';
-        selectConvite.removeAttribute('required');
-        document.getElementById('conviteExtraStep1').style.display = 'none';
-        document.getElementById('lblHomenageado').textContent = 'Nome do(a) homenageado(a)';
-      }
-
-      // ── Step 2: alternar campos retro vs convite ──
-      const retroFields = document.getElementById('retroFields');
-      const conviteFields = document.getElementById('conviteFields');
-      const transicoes = document.getElementById('fTransicoesDesenhos');
       const grupoVideos = document.getElementById('grupoVideos');
-
-      if (isConvite) {
-        retroFields.style.display = 'none';
-        conviteFields.style.display = '';
-        transicoes.removeAttribute('required');
-
-        // Convite: vídeos nunca, música arquivo só se for animado/completo
-        if (grupoVideos) grupoVideos.style.display = 'none';
-
-        // Mostrar campo de música escrita só se pacote animado/completo
-        document.getElementById('grupoMusicaConvite').style.display = p.precisaMusica ? '' : 'none';
-        // Mostrar campo de RSVP só se interativo/completo
-        document.getElementById('grupoRsvpConvite').style.display = p.temRsvp ? '' : 'none';
-
-        // Foto: convite usa no máximo 3 (geralmente 1, mas damos opções)
-        document.getElementById('lblUploadFotos').innerHTML = 'Foto(s) do(a) aniversariante <span class="form-label-hint" id="fFotosLimit">(máx. ' + p.fotosMax + ')</span>';
-        document.getElementById('lblUploadFotosTxt').textContent = 'ou arraste a foto';
+      if (p.videos > 0) {
+        grupoVideos.style.display = 'block';
+        document.getElementById('fVideosLimit').textContent = '(máx. ' + p.videos + ')';
       } else {
-        retroFields.style.display = '';
-        conviteFields.style.display = 'none';
-        transicoes.setAttribute('required', 'required');
-
-        // Retrospectiva: vídeos conforme pacote
-        if (p.videos > 0) {
-          grupoVideos.style.display = 'block';
-          document.getElementById('fVideosLimit').textContent = '(máx. ' + p.videos + ')';
-        } else {
-          grupoVideos.style.display = 'none';
-        }
-        document.getElementById('fFotosLimit').textContent = '(máx. ' + p.fotos + ')';
-        document.getElementById('lblUploadFotos').innerHTML = 'Fotos * <span class="form-label-hint" id="fFotosLimit">(máx. ' + p.fotos + ')</span>';
-        document.getElementById('lblUploadFotosTxt').textContent = 'ou arraste as fotos';
+        grupoVideos.style.display = 'none';
       }
 
       showStep(1);
@@ -870,32 +711,18 @@
 
     function validateStep(n) {
       let valid = true;
-      const isConvite = (currentProduto === 'convite');
-
       if (n === 1) {
-        // Campos comuns a ambos os produtos
         const fields = [
           { id: 'fNome', err: 'errNome' },
           { id: 'fWhatsapp', err: 'errWhatsapp' },
           { id: 'fEmail', err: 'errEmail' },
+          { id: 'fTipoEvento', err: 'errTipoEvento' },
           { id: 'fDataEvento', err: 'errDataEvento' },
           { id: 'fHomenageado', err: 'errHomenageado' }
         ];
-        // Tipo de evento varia conforme produto
-        fields.push(isConvite
-          ? { id: 'fTipoEventoConvite', err: 'errTipoEvento' }
-          : { id: 'fTipoEvento', err: 'errTipoEvento' }
-        );
-        // Convite tem campos extras obrigatórios
-        if (isConvite) {
-          fields.push({ id: 'fHorarioEvento', err: 'errHorarioEvento' });
-          fields.push({ id: 'fLocalEvento', err: 'errLocalEvento' });
-        }
-
         fields.forEach(f => {
           const el = document.getElementById(f.id);
           const errEl = document.getElementById(f.err);
-          if (!el || !errEl) return;
           if (!el.value.trim()) {
             el.classList.add('error');
             errEl.style.display = 'block';
@@ -905,7 +732,6 @@
             errEl.style.display = 'none';
           }
         });
-
         const email = document.getElementById('fEmail');
         if (email.value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) {
           email.classList.add('error');
@@ -913,41 +739,20 @@
           valid = false;
         }
       }
-
       if (n === 2) {
-        if (isConvite) {
-          // Validar tema (obrigatório)
-          const tema = document.getElementById('fTema');
-          const temaErr = document.getElementById('errTema');
-          if (!tema.value.trim()) {
-            tema.classList.add('error');
-            temaErr.style.display = 'block';
-            valid = false;
-          } else {
-            tema.classList.remove('error');
-            temaErr.style.display = 'none';
-          }
-          // Foto: pelo menos 1
-          if (uploadedFotos.length === 0) {
-            valid = false;
-            alert('Selecione pelo menos 1 foto do(a) aniversariante para continuar.');
-          }
+        const transicoes = document.getElementById('fTransicoesDesenhos');
+        const transicoesErr = document.getElementById('errTransicoesDesenhos');
+        if (!transicoes.value.trim()) {
+          transicoes.classList.add('error');
+          transicoesErr.style.display = 'block';
+          valid = false;
         } else {
-          // Retrospectiva: validar transições de desenhos
-          const transicoes = document.getElementById('fTransicoesDesenhos');
-          const transicoesErr = document.getElementById('errTransicoesDesenhos');
-          if (!transicoes.value.trim()) {
-            transicoes.classList.add('error');
-            transicoesErr.style.display = 'block';
-            valid = false;
-          } else {
-            transicoes.classList.remove('error');
-            transicoesErr.style.display = 'none';
-          }
-          if (uploadedFotos.length === 0) {
-            valid = false;
-            alert('Selecione pelo menos 1 foto para continuar.');
-          }
+          transicoes.classList.remove('error');
+          transicoesErr.style.display = 'none';
+        }
+        if (uploadedFotos.length === 0) {
+          valid = false;
+          alert('Selecione pelo menos 1 foto para continuar.');
         }
       }
       return valid;
@@ -964,67 +769,32 @@
     }
 
     function buildReview() {
-      const p = getPacoteAtual();
-      const isConvite = (currentProduto === 'convite');
-
-      // Tipo de evento — pega do select correto
-      const tipoEventoSelect = isConvite
-        ? document.getElementById('fTipoEventoConvite')
-        : document.getElementById('fTipoEvento');
-      const tipoText = tipoEventoSelect.options[tipoEventoSelect.selectedIndex].text;
-
+      const p = PACOTES[currentPacote];
+      const tipoEvento = document.getElementById('fTipoEvento');
+      const tipoText = tipoEvento.options[tipoEvento.selectedIndex].text;
       const dataEvento = document.getElementById('fDataEvento').value;
       const dataFormatted = dataEvento ? new Date(dataEvento + 'T12:00:00').toLocaleDateString('pt-BR') : '';
+      const transicoes = document.getElementById('fTransicoesDesenhos');
+      const transicoesText = transicoes.options[transicoes.selectedIndex].text;
 
-      const produtoLabel = isConvite ? 'Convite' : 'Retrospectiva';
       const rows = [
-        ['Produto', produtoLabel],
         ['Pacote', p.nome + ' — ' + p.preco],
         ['Nome', document.getElementById('fNome').value],
         ['WhatsApp', document.getElementById('fWhatsapp').value],
         ['E-mail', document.getElementById('fEmail').value],
         ['Evento', tipoText],
         ['Data', dataFormatted],
+        ['Homenageado(a)', document.getElementById('fHomenageado').value],
+        ['Música', document.getElementById('fMusica').value || '(não informada)'],
+        ['Transições de desenhos', transicoesText],
+        ['Sugestão/restrição de desenho', document.getElementById('fRestricaoDesenho').value || '(não informada)'],
+        ['Fotos', uploadedFotos.length + ' arquivo(s)'],
       ];
-
-      if (isConvite) {
-        const horario = document.getElementById('fHorarioEvento').value;
-        if (horario) rows.push(['Horário', horario]);
-        rows.push(['Aniversariante/Homenageado', document.getElementById('fHomenageado').value]);
-        const anfitriao = document.getElementById('fAnfitriao').value;
-        if (anfitriao) rows.push(['Quem convida', anfitriao]);
-        rows.push(['Local', document.getElementById('fLocalEvento').value]);
-        rows.push(['Tema/Estilo', document.getElementById('fTema').value]);
-        const cores = document.getElementById('fCores').value;
-        if (cores) rows.push(['Cores', cores]);
-        const frase = document.getElementById('fFraseConvite').value;
-        if (frase) rows.push(['Frase do convite', frase]);
-        if (p.precisaMusica) {
-          const mus = document.getElementById('fMusicaConvite').value;
-          rows.push(['Música', mus || '(a definir)']);
-        }
-        if (p.temRsvp) {
-          const rsvp = document.getElementById('fRsvpData').value;
-          const rsvpFormatted = rsvp ? new Date(rsvp + 'T12:00:00').toLocaleDateString('pt-BR') : '';
-          if (rsvpFormatted) rows.push(['Prazo RSVP', rsvpFormatted]);
-        }
-        const obs = document.getElementById('fObservacoes').value;
-        if (obs) rows.push(['Observações', obs]);
-        rows.push(['Fotos', uploadedFotos.length + ' arquivo(s)']);
-      } else {
-        rows.push(['Homenageado(a)', document.getElementById('fHomenageado').value]);
-        rows.push(['Música', document.getElementById('fMusica').value || '(não informada)']);
-        const transicoes = document.getElementById('fTransicoesDesenhos');
-        const transicoesText = transicoes.options[transicoes.selectedIndex].text;
-        rows.push(['Transições de desenhos', transicoesText]);
-        rows.push(['Sugestão/restrição de desenho', document.getElementById('fRestricaoDesenho').value || '(não informada)']);
-        rows.push(['Fotos', uploadedFotos.length + ' arquivo(s)']);
-        if (p.videos > 0) {
-          rows.push(['Vídeos', uploadedVideos.length + ' arquivo(s)']);
-        }
-        if (uploadedMusica.length > 0) {
-          rows.push(['Arquivo de música', uploadedMusica[0].name]);
-        }
+      if (p.videos > 0) {
+        rows.push(['Vídeos', uploadedVideos.length + ' arquivo(s)']);
+      }
+      if (uploadedMusica.length > 0) {
+        rows.push(['Arquivo de música', uploadedMusica[0].name]);
       }
 
       const html = rows.map(r => '<div class="form-summary-row"><span>' + r[0] + '</span><span>' + r[1] + '</span></div>').join('');
@@ -1033,47 +803,26 @@
 
     const API_BASE = 'https://api-retrospectiva.asuaretrospectiva.workers.dev';
 
-    // ═══════════════════════════════════════════════════
-    // IDs DE CONVERSÃO DO GOOGLE ADS
-    // ═══════════════════════════════════════════════════
-    // Para separar campanhas no painel do Ads, crie 2 ações
-    // de conversão no Google Ads (Ferramentas > Conversões)
-    // e cole os IDs aqui. Cada ação retorna uma string como
-    // "AW-XXXXX/YYYYY". O ID atual está em 'retrospectiva'.
-    // Antes de criar a do convite, mantenho o mesmo ID nos dois
-    // pra não quebrar tracking — TROQUE assim que tiver o novo.
-    const CONVERSION_IDS = {
-      retrospectiva: 'AW-18093869167/Hki0CO_k9pwcEO-Q6rND',
-      convite:       'AW-18093869167/flD5CO_GmKwcEO-Q6rND'  // ← TROCAR pelo ID novo após criar no Ads
-    };
-
     function submitForm() {
       const btn = document.getElementById('btnSubmit');
       btn.disabled = true;
       btn.textContent = 'Enviando arquivos...';
 
-      const p = getPacoteAtual();
-      const isConvite = (currentProduto === 'convite');
-
-      // Tipo de evento — pega do select correto
-      const tipoEventoSelect = isConvite
-        ? document.getElementById('fTipoEventoConvite')
-        : document.getElementById('fTipoEvento');
-      const tipoText = tipoEventoSelect.options[tipoEventoSelect.selectedIndex].text;
-      const tipoValor = tipoEventoSelect.value;
-
+      const p = PACOTES[currentPacote];
+      const tipoEvento = document.getElementById('fTipoEvento');
+      const tipoText = tipoEvento.options[tipoEvento.selectedIndex].text;
       const dataEvento = document.getElementById('fDataEvento').value;
       const dataFormatted = dataEvento ? new Date(dataEvento + 'T12:00:00').toLocaleDateString('pt-BR') : '';
+      const transicoes = document.getElementById('fTransicoesDesenhos');
+      const transicoesText = transicoes.options[transicoes.selectedIndex].text;
 
       const orderId = crypto.randomUUID ? crypto.randomUUID() : 'order-' + Date.now() + '-' + Math.random().toString(36).substr(2, 9);
 
       // Collect all files
       const allFiles = [];
       uploadedFotos.forEach(function(f) { allFiles.push({ file: f, category: 'fotos' }); });
-      if (!isConvite) {
-        uploadedVideos.forEach(function(f) { allFiles.push({ file: f, category: 'videos' }); });
-        uploadedMusica.forEach(function(f) { allFiles.push({ file: f, category: 'musica' }); });
-      }
+      uploadedVideos.forEach(function(f) { allFiles.push({ file: f, category: 'videos' }); });
+      uploadedMusica.forEach(function(f) { allFiles.push({ file: f, category: 'musica' }); });
 
       // Step 1: Get presigned URLs
       const filesPayload = allFiles.map(function(item) {
@@ -1090,9 +839,7 @@
         return res.json();
       })
       .then(function(data) {
-        btn.textContent = allFiles.length > 0
-          ? 'Enviando ' + allFiles.length + ' arquivo(s)...'
-          : 'Finalizando pedido...';
+        btn.textContent = 'Enviando ' + allFiles.length + ' arquivo(s)...';
 
         // Step 2: Upload each file to R2 via presigned URL
         var uploadPromises = data.urls.map(function(urlInfo, i) {
@@ -1113,10 +860,7 @@
         // Step 3: Submit form data to Worker
         var submitPayload = {
           order_id: orderId,
-          produto: currentProduto,       // 'retrospectiva' ou 'convite'
           pacote: currentPacote,
-          pacote_nome: p.nome,
-          pacote_preco: p.preco,
           cliente: {
             nome: document.getElementById('fNome').value,
             email: document.getElementById('fEmail').value,
@@ -1124,49 +868,24 @@
           },
           evento: {
             tipo: tipoText,
-            tipo_valor: tipoValor,
+            tipo_valor: document.getElementById('fTipoEvento').value,
             nome_homenageado: document.getElementById('fHomenageado').value,
             data_evento: dataEvento,
-            data_formatada: dataFormatted
+            data_formatada: dataFormatted,
+            mensagem_especial: document.getElementById('fMensagem').value || ''
           },
-          file_keys: presignData.urls.map(function(u) { return u.key; })
-        };
-
-        if (isConvite) {
-          // Dados específicos de convite
-          submitPayload.evento.horario = document.getElementById('fHorarioEvento').value;
-          submitPayload.evento.local = document.getElementById('fLocalEvento').value;
-          submitPayload.evento.anfitriao = document.getElementById('fAnfitriao').value || '';
-
-          submitPayload.convite = {
-            tipo: p.tipo,                                                              // 'estatico'|'animado'|'interativo'|'completo'
-            tema: document.getElementById('fTema').value,
-            cores: document.getElementById('fCores').value || '',
-            frase: document.getElementById('fFraseConvite').value || '',
-            musica: p.precisaMusica ? (document.getElementById('fMusicaConvite').value || '') : '',
-            rsvp_data: p.temRsvp ? (document.getElementById('fRsvpData').value || '') : '',
-            observacoes: document.getElementById('fObservacoes').value || ''
-          };
-
-          submitPayload.arquivos_enviados = {
-            fotos: uploadedFotos.length
-          };
-        } else {
-          // Dados específicos de retrospectiva
-          submitPayload.evento.mensagem_especial = document.getElementById('fMensagem').value || '';
-
-          submitPayload.preferencias = {
+          preferencias: {
             musica: document.getElementById('fMusica').value || '',
-            transicoes_desenhos: document.getElementById('fTransicoesDesenhos').options[document.getElementById('fTransicoesDesenhos').selectedIndex].text,
+            transicoes_desenhos: transicoesText,
             restricao_desenho: document.getElementById('fRestricaoDesenho').value || ''
-          };
-
-          submitPayload.arquivos_enviados = {
+          },
+          arquivos_enviados: {
             fotos: uploadedFotos.length,
             videos: uploadedVideos.length,
             musica: uploadedMusica.length
-          };
-        }
+          },
+          file_keys: presignData.urls.map(function(u) { return u.key; })
+        };
 
         return fetch(API_BASE + '/api/submit', {
           method: 'POST',
@@ -1183,11 +902,9 @@
         showStep(4);
         btn.disabled = false;
         btn.textContent = 'Enviar sem compromisso ✓';
-
-        // Conversão Google Ads — escolhe o ID correto por produto
         gtag('event', 'conversion', {
-          'send_to': CONVERSION_IDS[currentProduto] || CONVERSION_IDS.retrospectiva,
-          'value': parseFloat(p.preco.replace('R$ ', '').replace(/\./g,'').replace(',', '.')),
+          'send_to': 'AW-18093869167/Hki0CO_k9pwcEO-Q6rND',
+          'value': parseFloat(p.preco.replace('R$ ', '').replace(',', '.')),
           'currency': 'BRL'
         });
       })
@@ -1257,19 +974,12 @@
     };
 
     function initUploads() {
-      var p = getPacoteAtual();
-      var isConvite = (currentProduto === 'convite');
-      // Limite de fotos: convite usa p.fotosMax; retrospectiva usa p.fotos
-      var maxFotos = isConvite ? p.fotosMax : p.fotos;
-      setupUpload('inputFotos', 'listFotos', 'countFotos', uploadedFotos, maxFotos, 15);
-
-      // Vídeos e música em arquivo só existem em retrospectiva
-      if (!isConvite && p.videos > 0) {
+      var p = PACOTES[currentPacote];
+      setupUpload('inputFotos', 'listFotos', 'countFotos', uploadedFotos, p.fotos, 15);
+      if (p.videos > 0) {
         setupUpload('inputVideos', 'listVideos', 'countVideos', uploadedVideos, p.videos, 500);
       }
-      if (!isConvite) {
-        setupUpload('inputMusica', 'listMusica', null, uploadedMusica, 1, 50);
-      }
+      setupUpload('inputMusica', 'listMusica', null, uploadedMusica, 1, 50);
     }
 
     // ── Initialize ──
